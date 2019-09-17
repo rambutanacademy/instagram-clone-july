@@ -12,3 +12,9 @@
 <% else %>
   <p>Hoi</p>
 <% end %>
+
+
+<% if @photo.attachment.attached? %>
+  <p>Attached</p>
+  <%= link_to 'Download', url_for(@photo.attachment) %>
+<% end %>
