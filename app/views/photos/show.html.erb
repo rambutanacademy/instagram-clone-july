@@ -1,1 +1,14 @@
 <h1><%= @photo.caption %></h1>
+
+<% if @photo.image.attached? %>
+  <%= image_tag @photo.image %>
+<% end %>
+
+<% if @photo.images.attached? %>
+  <p>Hai</p>
+  <% @photo.images.each do |image| %>
+    <%= image_tag image, height: 100 %>
+  <% end %>
+<% else %>
+  <p>Hoi</p>
+<% end %>
