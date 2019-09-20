@@ -1,20 +1,20 @@
-<h1><%= @photo.caption %></h1>
+<section class="row">
+  <section class="col-md-12">
+    <h1><%= @photo.caption %></h1>
 
-<% if @photo.image.attached? %>
-  <%= image_tag @photo.image %>
-<% end %>
+    <% if @photo.image.attached? %>
+      <%= image_tag @photo.image, class: "img-fluid" %>
+    <% end %>
 
-<% if @photo.images.attached? %>
-  <p>Hai</p>
-  <% @photo.images.each do |image| %>
-    <%= image_tag image, height: 100 %>
-  <% end %>
-<% else %>
-  <p>Hoi</p>
-<% end %>
+    <% if @photo.images.attached? %>
+      <% @photo.images.each do |image| %>
+        <%= image_tag image, class: "img-fluid" %>
+      <% end %>
+    <% end %>
 
-
-<% if @photo.attachment.attached? %>
-  <p>Attached</p>
-  <%= link_to 'Download', url_for(@photo.attachment) %>
-<% end %>
+    <% if @photo.attachment.attached? %>
+      <p>Attached</p>
+      <%= link_to "Download", url_for(@photo.attachment) %>
+    <% end %>
+  </section>
+</section>

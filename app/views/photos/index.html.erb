@@ -1,0 +1,24 @@
+<% if @photos.any? %>
+  <section class="row">
+    <% @photos.in_groups_of(3) do |group| %>
+      <% group.compact.each do |photo|%>
+        <section class="col-md-4">
+          <section class="card mb-3">
+            <%= link_to photo_url(photo) do %>
+            <% if photo.image.attached? %>
+              <%= image_tag photo.image, class: 'img-fluid' %>
+            <% end %>
+            <% end %>
+            <section class="card-body">
+              <p class="text-muted mb-0"><%= photo.user.email %></p>
+              <p><%=  photo.caption %></p>
+              <%= link_to photo_url(photo), method: :delete, class: 'text-danger' do %>
+                <%= fa_icon "trash" %>
+              <% end %>
+            </section>
+          </section>
+        </section>
+      <% end %>
+    <% end %>
+  </section>
+<% end %>

@@ -1,4 +1,8 @@
 class PhotosController < ApplicationController
+  def index
+    @photos = Photo.all
+  end
+
   def new
     @photo = Photo.new
   end
@@ -15,6 +19,16 @@ class PhotosController < ApplicationController
 
   def show
     @photo = Photo.find(params[:id])
+  end
+
+  def destroy
+    @photo = Photo.find(params[:id])
+
+    if @photo.destroy
+      redirect_to root_url
+    else
+      redirect_to @photo
+    end
   end
 
   private
